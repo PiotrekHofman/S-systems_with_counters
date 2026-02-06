@@ -1,0 +1,103 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage{xcolor}
+
+\usepackage{amsmath,amssymb}
+\usepackage{comment}
+
+\usepackage{enumitem}
+\usepackage{bm}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{nicefrac}
+%\usepackage{enumitem}
+\usepackage{multirow}
+%\usepackage{marvosym}
+\usepackage{booktabs}
+\usepackage{xspace}
+%\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{subcaption}
+%\usepackage{listings}
+\usepackage{makecell}
+%\usepackage{thm-restate}
+\usepackage{todonotes}
+
+\usepackage{tikz}
+\usetikzlibrary{petri,calc,backgrounds,hobby,decorations.pathreplacing,shapes.symbols,positioning,fit,patterns,automata}
+\usetikzlibrary{arrows.meta}
+
+\usepackage{adjustbox}
+\usepackage{lineno}
+\linenumbers
+
+\pgfdeclarelayer{back}
+\pgfsetlayers{back,main}
+
+\usepackage{macros}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=red!70!black
+}
+
+\newcommand{\filip}[1]{\todo[color=cyan]{Filip: #1}}
+\newcommand{\piotrek}[1]{\todo[color=orange]{Piotrek: #1}}
+\newcommand{\krzysiek}[1]{\todo[color=green]{Krzysiek: #1}}
+
+% \spnewtheorem{claim}{Claim}{\itshape}{\rmfamily}
+% \crefname{claim}{Claim}{Claims}
+
+% \spnewtheorem{remark}{Remark}{\itshape}{\rmfamily}
+% \crefname{remark}{Remark}{Remarks}
+
+\begin{document}
+
+\title{Weighted soundness for Workflow Nets}
+
+\author{Anonymous Author(s)}
+
+\institute{}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+
+\keywords{Workflow nets, soundness, business processes}
+
+%% Contents
+\section{Introduction}
+%\input{sec-introduction}
+
+
+\section{Preliminaries}
+\label{sec:prelims}
+\input{sec-prelim}
+
+
+% This and developing heuristic improving performance of tools verifying weighted soundness are the most important future research directions.       
+
+% However the overhead is not that big as developed algorithms allow to verify all considered benchmarks.  
+% 
+% we think it gives better insight into the process model. Further   
+% The new concept and results presented is a first step towards exploration of weighted workflows. In the future 
+
+%% Bibliography
+%\clearpage
+\bibliographystyle{splncs04}
+\bibliography{references}
+
+\clearpage
+\appendix
+
+
+
+\end{document}

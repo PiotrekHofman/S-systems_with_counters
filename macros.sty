@@ -1,0 +1,374 @@
+%% Placeholder - TODO: maybe change this
+%% Termination
+\renewcommand{\L}[1]{MaxTime_#1}
+\newcommand{\MinTime}[1]{MinTime_\pn(#1)}
+\newcommand{\linear}[1]{$#1$-linear} % linear with given
+\newcommand{\alinear}{\linear{a}} % linear with constant factor a
+%%%%%%%%
+
+\newcommand{\np}{\textsc{NP}}
+\newcommand{\npnp}{\textsc{NP}$^{\textsc{NP}}$}
+\newcommand{\PSPACE}{\textsc{PSpace}}
+
+%% General typesetting
+\newcommand{\eg}{\textit{e.g.}\@\xspace}
+\newcommand{\ie}{\textit{i.e.}\@\xspace}
+\newcommand{\etal}{\textit{et al.}}
+\newcommand{\tmp}[1]{\textcolor{red}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+%% General math
+\newcommand{\defeq}{\coloneqq}                        %% Definition operator
+\newcommand{\N}{\mathbb{N}}                           %% Natural numbers
+\newcommand{\Nomega}{\mathbb{N_{\omega}}}                           %% Natural numbers
+
+\newcommand{\Z}{\mathbb{Z}}                           %% Integers
+\newcommand{\Q}{\mathbb{Q}}                           %% Rationals
+\newcommand{\R}{\mathbb{R}}                           %% Reals
+\newcommand{\D}{\mathbb{D}}                           %% Generic domain
+\newcommand{\Qpos}{\mathbb{Q}_{\ge 0}}                    %% Non neg. rationals
+\newcommand{\Npos}{\mathbb{N}_{> 0}}                    %% positive natural numbers
+
+\newcommand{\mat}[1]{\mathbf{#1}}                     %% Matrix notation
+\renewcommand{\vec}[1]{\bm{#1}}                       %% Vector notation
+\newcommand{\transpose}{\mathsf{T}}                   %% Matrix transpose
+\newcommand{\sol}[1]{\llbracket#1\rrbracket}          %% Set of solutions
+\newcommand{\G}{\mathfrak{S}}
+\newcommand{\I}{\mathfrak{I}}
+\newcommand{\Pe}{\mathcal{P}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\set}[1]{{\{#1\}}}
+\newcommand{\Set}[1]{{\bf {{#1}}}}
+
+%% type Set
+\newcommand{\ls}{<}
+\newcommand{\gr}{>}
+
+\newcommand{\Nn}{\N_{\geq 1}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+\newcommand{\size}[1]{\abs{#1}}			%% Size of a set
+\newcommand{\length}[1]{\abs{#1}}		%% Length of a sequence
+
+
+
+%% For vectors
+\newcommand{\0}{\vec{0}}
+\newcommand{\1}{\vec{1}}
+\newcommand{\B}{\vec{B}}
+\newcommand{\ttau}{\vec{\tau}}
+
+
+% \newcommand{\Ball}{B_{\set{1,\dots,n}}}
+\newcommand{\Ball}{B}
+
+%%%%
+% from https://tex.stackexchange.com/a/43009
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+%%%%
+
+%% Complexity
+\newcommand{\bigO}{\mathcal{O}}
+
+%% Petri nets
+\newcommand{\pn}{\mathcal{N}}                         %% Generic Petri net name
+\newcommand{\trans}[1]{\xrightarrow{}^{#1}}              %% Reachability relation
+\newcommand{\reach}{\trans{*}}                       %% Starred reachability
+\newcommand{\ctrans}[1]{\xrightarrow{}_{\Qpos}^{#1}} %% Continuous reach. rel.
+\newcommand{\creach}{\ctrans{*}}                   %% Starred continuous reach.
+\newcommand{\ztrans}[1]{\xrightarrow{}_{\Z}^{#1}}  %% Continuous reach. rel.
+\newcommand{\zreach}{\ztrans{*}}                   %% Starred int. reach.
+\newcommand{\cztrans}[1]{\xrightarrow{}_{\Q}^{#1}}  %% Integer continuous reach. rel.
+\newcommand{\czreach}{\cztrans{*}}                   %% Starred int. cont. reach.
+\newcommand{\dtrans}[1]{\xrightarrow{}_{\D}^{#1}}  %% Generic reach. rel.
+\newcommand{\dreach}{\dtrans{*}}                   %% Starred generic reach.
+
+\newcommand{\before}[1]{\overleftarrow{#1}}
+\newcommand{\during}[1]{\dot{#1}}
+\newcommand{\after}[1]{\overrightarrow{#1}}
+
+\newcommand{\revt}[1]{\text{-}#1}
+
+\newcommand{\pre}[1]{{^\bullet #1}}
+\newcommand{\post}[1]{{#1^\bullet}}
+\newcommand{\postp}[2]{#1^{#2\bullet}}
+
+
+
+\newcommand{\pret}{\pre{t}}
+\newcommand{\postt}{\post{t}}
+\newcommand{\Effect}{\Delta}
+\newcommand{\effect}[1]{\Effect(#1)}
+\newcommand{\effectt}{\effect{t}}
+
+\newcommand{\supppre}[1]{\support{^\bullet #1}}
+\newcommand{\supppost}[1]{\support{#1^\bullet}}
+\newcommand{\support}[1]{\mathrm{supp}(#1)}
+
+\newcommand{\soundS}[1]{\mathcal{S}_{#1}}
+
+\newcommand{\modp}{\% p}
+\newcommand{\upk}{\leq k}
+
+\newcommand{\Reach}[1]{\text{Reach}(#1)}        %% Reachable markings
+\newcommand{\ZReach}[1]{\Z\text{-Reach}(#1)}    %% Reachable markings
+\newcommand{\QReach}[1]{\Qpos\text{-Reach}(#1)} %% Reachable markings
+
+% Runs
+\newcommand{\Parikh}[1]{\vec{R}_{#1}}
+\newcommand{\FromTo}[3]{#1[#2:#3]}
+\newcommand{\Runs}{\text{Runs}_{\pn}}
+\newcommand{\CRuns}{\text{CRuns}_{\pn}}
+% \newcommand{\CZRuns}{\Q\text{-Runs}_{\pn}}
+
+% Continuous PN
+\newcommand{\QZeroOne}{\Q_(0,1]} % Continuous domain
+\newcommand{\ZeroOne}{(0,1]} % Continuous domain
+\newcommand{\weight}[1]{\length{#1}_c}
+
+%% WF Nets
+\newcommand{\initial}{\mathsf{i}}
+\newcommand{\final}{\mathsf{f}}
+
+\newcommand{\m}{\vec{m}}
+\newcommand{\s}{\vec{s}}
+\newcommand{\n}{\vec{n}}
+\newcommand{\bv}{\vec{v}}
+\newcommand{\bb}{\vec{b}}
+\newcommand{\x}{\vec{x}}
+
+\newcommand{\wector}[1]{\vec{#1}}
+\newcommand{\conf}[1]{\vec{#1}}
+
+
+
+
+\newcommand{\ssound}{supersound}
+\newcommand{\f}{\output}
+\newcommand{\marking}[1]{{{\langle #1 \rangle}}}
+\newcommand{\imarked}[1]{\marking{\initial\colon #1}}
+\newcommand{\fmarked}[1]{\marking{\final\colon #1}}
+\newcommand{\imarking}[1]{\overline{\text{marking}}(#1)}
+\newcommand{\Marking}[1]{{\textcolor{blue}{{\bf #1 }}}}
+
+
+\newcommand{\sNums}[1]{\text{Sound}(#1)}
+\newcommand{\sns}{\sNums{N}}
+
+\newcommand{\csharp}{C\#}
+
+
+
+
+%% Aligning texts properly
+\newcommand{\textphantom}[2]{%
+  \makebox[0pt][l]{#1}\phantom{#2}%
+}
+
+%% Colors
+\newcommand{\phaseTwoColor}{green!50!black}
+\newcommand{\phaseTwoIncColor}{green!50!blue}
+\newcommand{\phaseTwoDecColor}{green!50!red}
+
+
+%% ILPs
+% \newcommand{\solutions}[1]{\llbracket #1 \rrbracket}
+% \newcommand{\nsolutions}[1]{\solutions{#1}_{\geq 0}}
+% 
+% \newcommand{\qsolutions}[1]{\llparenthesis #1 \rrparenthesis}
+% \newcommand{\qpossolutions}[1]{\qsolutions{#1}_{\geq 0}}
+
+\newcommand{\ilpn}{ILP$_\pn$}
+\newcommand{\ilpg}{ILP$_{\pn, p_1, \dots, p_n}$}
+\newcommand{\lpn}{LP$_\pn$}
+
+% Experiments
+\newcommand{\Csharp}{C\#}
+
+\newcommand{\plotscale}{0.9}
+
+\newcommand{\plotcanvas}[4]{%
+  \begin{tikzpicture}[font=\small, scale=\plotscale, transform shape]%
+    \begin{axis}[%
+        width=#4,
+        xlabel=#1,
+        legend pos=north west,
+        ylabel=#2,
+      ]%
+      #3%
+    \end{axis}%
+  \end{tikzpicture}%
+}
+
+\newcommand{\plotcanvaswithextraargs}[5]{%
+  \begin{tikzpicture}[font=\small]%
+    \begin{axis}[%
+        width=#4,
+        xlabel=#1,
+        legend pos=north west,
+        ylabel=#2,
+        #5
+      ]%
+      #3%
+    \end{axis}%
+  \end{tikzpicture}%
+}
+
+% Legends
+% \makeatletter
+% \newenvironment{customlegend}[1][]{%
+%     \begingroup
+%     % inits/clears the lists (which might be populated from previous
+%     % axes):
+%     \pgfplots@init@cleared@structures
+%     \pgfplotsset{#1}%
+% }{%
+%     % draws the legend:
+%     \pgfplots@createlegend
+%     \endgroup
+% }%
+% % makes \addlegendimage available (typically only available within an
+% % axis environment):
+% \def\addlegendimage{\pgfplots@addlegendimage}
+% \makeatother
+
+\newcommand{\addlegend}[2]{\addlegendimage{col#1, fill=col#1, mark=#2}}
+
+\newcommand{\addlegendmark}[2]{\addlegendimage{col#1, fill=col#1, only marks, mark=#2}}
+
+\colorlet{colConti}{green!50!black}
+\colorlet{colLola}{blue}
+\colorlet{colWoflan}{orange}
+
+\newcommand{\ourlegend}{\begin{tikzpicture}
+  \begin{axis}[%
+          hide axis,
+          xmin=10,
+          xmax=50,
+          ymin=0,
+          ymax=0.4,
+          legend columns=4,
+          legend style={draw=none, /tikz/every even column/.append style={column sep=0.5cm}}
+      ]
+      \addlegendimage{colConti,mark=*}
+      \addlegendentry{This work};
+      \addlegendimage{colLola,mark=square*}
+      \addlegendentry{LoLA};
+      \addlegendimage{colWoflan,mark=diamond*}
+      \addlegendentry{Woflan};
+  \end{axis}
+\end{tikzpicture}}
+
+\newcommand{\encpn}{\pn_\mathrm{enc}}
+
+
+%supremums
+\newcommand{\CL}[1]{\overline{#1}}
+
+\newcommand{\supr}[2]{\text{sup}_{#1,#2}}
+
+%
+\newcommand{\transc}[1]{\ctrans{#1}}
+%
+
+\newcommand{\linConst}[1]{a_{#1}}
+
+
+% Experiments
+\newcommand{\linFraction}{\mathfrak{L}}
+
+
+
+
+%% Colors
+\colorlet{colA}{red}
+\colorlet{colB}{cyan}
+\colorlet{colC}{green}
+
+\colorlet{colUp}{blue!75!black}
+\newcommand{\up}[1]{{\color{colUp}#1}}
+\newcommand{\bup}{\color{colUp}}
+\newcommand{\eup}{\color{black}}
+
+%% Math
+\newcommand{\Nat}{\N}
+\renewcommand{\vec}[1]{\bm{#1}}
+
+
+%% Drawings
+\tikzstyle{place} = [
+  circle, thick, draw=black!75, minimum size=6mm
+]
+\tikzstyle{transition} = [
+  rectangle, thick, draw=black!75, minimum size=4mm
+]
+
+%% Minsky machines
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\inc}[1]{\texttt{x}_{#1}\texttt{\scriptsize++}}
+\newcommand{\dec}[1]{\texttt{x}_{#1}\texttt{\scriptsize--}}
+\newcommand{\zrt}[1]{\texttt{x}_{#1}\texttt{\,=\,0?}}
+\newcommand{\qsrc}{q_{\text{src}}}
+\newcommand{\qtgt}{q_{\text{tgt}}}
+\newcommand{\budget}[1]{\overline{#1}}
+
+%% Petri nets
+\newcommand{\PN}{\mathcal{N}}
+\newcommand{\Places}{P}
+\newcommand{\Transitions}{T}
+
+\newcommand{\transS}[1]{\trans{#1}_{s}}
+
+\newcommand{\prevec}[1]{\bm{\mathrm{pre}}_{#1}}
+\newcommand{\postvec}[1]{\bm{\mathrm{post}}_{#1}}
+
+\newcommand{\reset}[1]{{{#1}^{Res}}}
+\newcommand{\Res}[1]{
+ \ifthenelse{\equal{#1}{NoArg}}%
+ {Reset}
+ {Reset({#1})}
+}
+\newcommand{\Rest}[2]{Reset_{#1}(#2)}
+
+%% Markings
+
+\newcommand{\upclosure}[1]{{\uparrow\!#1}}
+\newcommand{\downclosure}[1]{{\downarrow\!#1}}
+
+%% Workflow nets
+
+
+% \newcommand{\applied}{\star} %% Replaced by \Rest{}{}
+
+
+\newcommand{\true}{true}
+\newcommand{\false}{false}
+
+
+
+
+%%%%%%%%%%%%%%%%% SUMBOLS %%%%%%%%%%%%%%%%%%%
+
+\newcommand{\kk}{{\alpha}}
+\newcommand{\el}{{\beta}}
+
+
+
+\newcommand{\tree}[3]{{{#1_{#2#3}}}}

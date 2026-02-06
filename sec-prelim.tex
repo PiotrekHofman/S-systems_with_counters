@@ -1,0 +1,232 @@
+We write $\N, \Npos, \Z$ for: naturals, positive naturals,  and integers, respectively. By $\omega$ we denote a number that is bigger than all natural numbers and we denote $\Nomega = \N\cup \set{\omega}$. Given $a,b \in \N$ we denote $[a,b] = \set{n \in \N \mid a\le n \le b}$.
+
+Let $D$ be a set of numbers, \eg $D = \N$, $\Z$, $\Q$.
+For $d\in \Npos$  we write $D^d$ for the set of vectors
+with elements from $D$ in dimension $d$.
+% ; and $D^{d_1 \times d_2}$ is the set of matrices with $d_1$ rows and $d_2$ columns and elements from $D$.
+We use bold font for vectors.
+For $a \in \Q$ and $d \in \Npos$, we write $\vec{a}^d \defeq
+(a,a,\dots,a) \in \Q^d$ (or $\vec{a}$ if $d$ is clear from the context). In particular $\vec{0}^d = \vec{0}$ is the zero vector.
+
+Sometimes it is more convenient to have vectors with coordinates in a finite set.
+Thus, for a finite set $\Set{S}$, we write $D^\Set{S}$ for the set of vectors
+over the domain $D$.
+Given a vector $\vec{v}$ and an element $s \in \Set{S}$, we write $\vec{v}(s)$
+for the value $\vec{v}$ assigns to $s$.
+% We write $\vec{0}^d$ to mean the zero vector of dimension $d$,
+% and omit the dimension when it is clear from context.
+% We naturally extend addition and subtraction to vectors by applying the operations
+% component-wise.
+% We also extend comparison to vectors.
+Given $\vec{v}, \vec{w}\in \Q^\Set{S}$,
+we write $\vec{v} \leq \vec{w}$ if $\vec{v}(s) \leq \vec{w}(s)$
+for all $s \in \Set{S}$,
+and $\vec{v} \ls \vec{w}$ if
+$\vec{v} \leq \vec{w}$ and
+$\vec{v}(s) \ls \vec{w}(s)$ for some $s \in \Set{S}$.
+
+The \emph{size} of a set $\Set{S}$, denoted $\size{\Set{S}}$, is the number of elements in $\Set{S}$.
+We define the \emph{norm} of a vector $\norm{\vec{v}} \defeq \max_{s \in \Set{S}} \abs{\vec{v}(s)}$.
+% and the norm of a matrix $\vec{A} \in \Q^{\Set{S} \times \Set{T}}$ as
+% $\norm{\vec{A}} \defeq \max_{s\in \Set{S}, t\in \Set{T}} \abs{A(s,t)}$.
+
+% For a set $\Set{S}\in \Q^d$, we denote by $\overline{\Set{S}} \in \R^d$ the closure of $\Set{S}$ in the euclidean space.\todo{Add norm of a function}
+% \filip{were do we use closure?}
+% \piotrek{I think we don't, it is copied from our previous paper}
+% \piotrek{I would add that we assume unary encoding of everything.}
+
+% As in may construction we have to define new vectors or matrices, we introduce lambdas. By $(\lambda x. f(x))$ we mean an anonymus function (vector) that for a parameter $x$ returns the value of $f(x)$. In particulat a constuction $(\lambda x. 0 \text{ if } x\in \Set{S} \text{ else }
+%  1)$ means that we provide the function that reurns $0$ for all $x\in \Set(S)$ and $1$ for all $x\not\in \Set{S}$.
+
+% \subsection{(Integer) Linear Programs}\todo{We dont need this, I think}
+% 
+% Let $n,m \in \Npos$, $\vec{A} \in \Z^{m \times n}$, and $\vec{b} \in \Z^m$.
+% We say that $G \defeq \vec{A}\vec{x} \leq \vec{b}$ is a \emph{system of linear inequalities}
+% with $m$ inequalities and $n$ variables.
+% The \emph{norm} of a system $G$ is defined as $\norm{G} \defeq \norm{\vec{A}} + \norm{\vec{b}} + m + n$.
+% An \emph{$(m \times n)$-ILP}, short for \emph{integer linear program},
+% is a system of linear inequalities with $m$ inequalities and $n$ variables,
+% where we are interested in the integer solutions.
+% An \emph{$(m \times n)$-LP} is such a system
+% where we are interested in the rational solutions.
+% We use the term MILP, short for \emph{mixed integer linear program},
+% for a system where some variables are allowed to take
+% on rational values, while others are restricted to integer values.
+% 
+% We allow syntactic sugar in ILPs and LPs,
+% such as allowing constraints $x \geq y$, $x = y$, $x< y$ (in the case of ILPs).
+% Sometimes we are interested in finding optimal solutions.
+% This means we have a objective function,
+% formally a linear function on the variables of the system,
+% and look for a solution that either maximizes or minimizes the value of that function.
+% For LPs, finding an optimal solution can be done in
+% polynomial time, while this is NP-complete for ILPs and MILPs.
+
+\subsection{Petri nets}\label{subsec:petri}
+
+A \emph{Petri net} $\pn$ is a triple $(\Set{P}, \Set{T}, F)$, where $\Set{P}$ is a
+finite set of \emph{places}; $\Set{T}$ is a finite set
+of \emph{transitions} such that $\Set{T} \cap \Set{P} = \emptyset$; and $F \colon
+((\Set{P} \times \Set{T}) \cup (\Set{T} \times \Set{P})) \to \N$ is
+a function describing its \emph{arcs}.
+
+A \emph{marking} is a vector $\m \in \N^\Set{P}$.
+We say that $\m(p)$ is the number of \emph{tokens} in a place $p \in P$ and that $p$ is \emph{marked} if $\m(p)>0$.
+To write markings, we list only non-zero token amounts.
+For example, $\m = \marking{p_1 \colon 2, p_2 \colon 1}$
+is the marking $\m$ with $\m(p_1) = 2, \m(p_2) = 1$ and
+$\m(p) = 0$ for all $p \in {\Set{P}} \setminus \set{p_1, p_2}$.
+
+Let $t \in \Set{T}$. We define
+% denote the \emph{pre} of $T$ as
+the vector $\pre{t} \in \N^{\Set{P}}$ by $\pre{t}(p) \defeq F(p,t)$ for $p \in {\Set{P}}$.
+Similarly, %the \emph{post} of $t$
+the vector $\post{t} \in \N^{\Set{P}}$ is defined by $\post{t}(p) \defeq F(t,p)$ for $p \in {\Set{P}}$.
+We write the \emph{effect} of $t$ as $\effectt \defeq \post{t} - \pre{t}$.
+A transition $t$ is \emph{enabled} in a marking $\m$
+if $\m \geq \pre{t}$.
+If $t$ is enabled in the marking $\m$,
+we can \emph{fire} it, which leads to the marking
+$\m' \defeq \m + \effectt$, which we denote $\m \trans{t} \m'$.
+We write $\m \trans{} \m'$ if there exists some $t \in \Set{T}$
+such that $\m \trans{t} \m'$.
+% We write $\m \trans{t}$ to denote that $\m$ enables $t$,
+
+A sequence of transitions $\pi = t_1 t_2 \dots t_n$
+is called a \emph{run}.
+We denote the \emph{length} of $\pi$ as $\length{\pi} \defeq n$.
+A run $\pi$ is \emph{enabled} in a marking $\m$
+iff $\m \trans{t_1} \m_1 \trans{t_2} \m_2 \trans{t_3} \dots \m_{n-1} \trans{t_n} \m'$
+for some markings $\m_1, \m_2, \dots, \m' \in \N^{\Set{P}}$.
+The set of all runs is denoted $\Runs^{\m}$, \ie $\pi \in \Runs^{\m}$ if $\pi$ is enabled in $\m$.
+The \emph{effect} of $\pi$ is $\effect{\pi} \defeq \sum_{i \in [1..n]} \effect{t_i}$.
+\emph{Firing} $\pi$ from $\m$ leads to a marking $\m'$, denoted $\m \trans{\pi} \m'$, iff $\pi \in \Runs^{\m}$
+and $\m' = \m + \effect{\pi}$.
+We denote by $\reach$ the reflexive and transitive closure of $\trans{}$.
+Given two runs $\pi = t_1 t_2 \dots t_n$ and $\pi' = t'_1 t'_2 \dots t'_{n'}$ we denote $\pi\pi' \defeq t_1 t_2 \dots t_n t'_1 t'_2 \dots t'_{n'}$.
+
+The \emph{reachability problem} gets as input a Petri net and
+two markings $\m_0$ and $\m_f$ and asks if there is a run
+$\m_0\trans{*}\m_f$.
+
+
+\begin{example}
+Consider the workflow net in \cref{fig:sub:b}. Let $\m = \imarked{2}$ and $\m' = \fmarked{2}$. Consider the run $\pi = t_2t_3t_4t_1$. Then $\m \trans{\pi} \m'$. In more detail $\m \trans{t_2} \marking{\initial \colon 1, p_2 \colon 1} \trans{t_3} \marking{\initial \colon 1, p_3 \colon 1} \trans{t_4} \marking{\initial \colon 1, \final \colon 1} \trans{t_1} \m'$.
+\end{example}
+
+\todo{size vs encoding}
+The size of a Petri net is defined as $\abs{\pn} = \abs{{\Set{P}}} + \abs{\Set{T}} + \abs{F}$.
+We define the \emph{norm} of $\pn$ as
+$\norm{\pn} \defeq \norm{F} + 1$,
+where we view $F$ as a vector in $\N^{({\Set{P}} \times \Set{T}) \cup (\Set{T} \times {\Set{P}})}$.
+
+
+We also consider an integer variant of the firing semantics
+of Petri nets which we need throughout the paper.
+In the \emph{integer semantics}, we consider markings over $\Z^{\Set{P}}$.
+There transitions can be always fired, \ie they are always enabled.
+To denote the corresponding firing and reachability relations, we add a subscript: $\ztrans{}$ and $\zreach$.
+
+\subsection{S-systems}
+In this paper we are interested in relaxations of a classical subclass of Petri net.
+
+\begin{definition}[S-system Petri net]
+A Petri net $N = (P,T,F)$ is called an \emph{S-system} if
+$F(x,y)\leq 1$ for every $x,y\in \Set{P}\cup \Set{T}$ and
+every
+transition has exactly one input place and exactly one output place. Formally, for every $t \in T$,
+\[
+\size{\pre{t}} = 1
+\quad\text{and}\quad
+\size{\post{t}} = 1.
+\]
+\end{definition}
+
+In this paper we want to relax this model by adding to it counters.
+
+
+\subsection{S-systems}
+In this paper we are interested in relaxations of a classical subclass of Petri net.
+
+\begin{definition}[S-system Petri net with $k$-counters]
+A Petri net $N = (P,T,F,U)$ is called an \emph{S-system with counters} if $(P,T,F)$ is an S-system Petri net and $U$ is update function $U:T\times\set{1\ldots k}\xrightarrow{}\Z$, where $k$ is a small natural number.
+
+The semantics of $N$ is the same as of a Petri net $N'=(P\cup [1\ldots k], T, F')$ where
+$F'(x,y)=F(x,y)$ if $x,y\in P\cup T$,
+$F'(x,t)=-U(t,x)$ if $x\in[1\ldots k], t\in T, U(x,t)\leq 0$, and
+$F'(t,x)=-U(t,x)$ if $x\in[1\ldots k], t\in T, U(x,t)> 0$.
+
+It means we extend the S-system with $k$ natural counters that can be updated by the transitions.
+\end{definition}
+
+\begin{example}
+
+\end{example}
+
+bla bla
+
+\begin{theorem}
+ The reachability problem in S-system Petri net with $k$-counters is
+ P-space complete independently from encoding.
+\end{theorem}
+
+We start by proving \PSPACE -hardness next we show that \PSPACE\ algorithm is an easy consequence of the previous results.
+
+\begin{lemma}
+ The reachability problem in S-system Petri net with $k$-counters is
+ P-space hard even for unary encoding.
+\end{lemma}
+\begin{proof}
+We show that the halting problem of the linarly bounded turing machine can be reduced to the reachability problem of the S-system
+with two counters.
+
+Suppose there is a given turing machine with a binary tape aplhabet
+tape has $n$ cells, $(\Set{Q},R)$ is the control automaton where $Q$ is the set of states, while $R$ is a function
+ $R:\Set{S}\times\set{0,1} \xrightarrow{}\set{0,1}\times\Set{S}\times\set{left = -1,right =1}$ describes the oprations.
+ If we are in state $q$ the head is pointing to $x\in \set{0,1}$, and the $R(q,x)=(y,r,s)$ then we change content of the cell pointed by the head to $y$, state is changed to $r$ and we move head to the $s$.
+Wihoult loss of generality we may assume that initially tape is constant $0$ and the head is in the position $1$.
+
+The constructed S-System has $n * 2 * (\size{Q}+1)$ states called $c_i^{0},c_i{0, q},c_i^{1},c_i{1, q}$ for $i\in\set{1\ldots n}$ and $q\in Q$. It also has $Q\times n\times \set{1,2}$ transitions $t_{q,j,x}^{pre}$ and $t_{q,j,x}^{post}$ where $q\in Q$, $0<j\leq n$, and $x\in \set{1,2}$.
+
+The idea is that we encode the current configuration of the machine in the following way: state and the position of the head we encode using two counters that sum up to $S_{um}=\size{\Set{Q}}*(n+1)$. If states are numbers form $0$ to $\size{Q}-1$ and we are in sate $q$ nad the head is at the position $h$, then the first counter is equal $(n+1)*q+h$ while the second counter is $S_{um}-q*(n+1)-h$. The content of the tape is encoded by tokens in places $c_i^{0}$ and $c_i^{1}$. For each such pair there is exactly one token and
+if it is in the place $c_i^{0}$ then the i-th cell value is $0$ while
+if it is in $c_i^{1}$ then the i-th cell value is $1$.
+
+Now, transitions are of the form $t_{q,j,x}^{pre}$ moves a token prom place $c_j^{x}$ to $c_{j}^{x,q}$
+and adds to counters $(-((n+1)*q+j), - (S_{um}-q*(n+1)-h)$.
+Note that
+after this step both counters are $0$. From state $c_{j}^{x,q}$
+there is only one outgoing transition, and it updates the value of the cell so if $R(q,x)=(y,r,s)$ then it moves the token to $c_{j}^{y}$ and adds to the counters $((n+1)\cdot r+ j+s, S_{um}-((n+1)\cdot r+ j+s))$.
+
+It should be clear that runs of the turing machine are in one to one correspondence with runs of the constructed net so halting problem is equivalent to the reachability of the halting configuration in the S-system with two counters.
+
+
+\end{proof}
+
+
+\begin{lemma}\label{lem:in_PSPACE}
+  The reachability problem in S-system Petri net with $k$-counters is in
+ $\PSPACE$ even if transition weights and initial and final configurations are given in binary.
+\end{lemma}
+
+The proof of this lemma relies on the following result
+\begin{theorem}[{\cite[Corollary 17]{DBLP:conf/lics/EnglertLT16}}]
+ The reachability problem for 2-VASS with integers
+given in unary is NL-complete.
+ \end{theorem}
+
+\begin{proof}{{\Cref{lem:in_PSPACE}.}}
+The idea is very simple, we encode our $S$-system with 2-counters as
+2-VASS of exponential size with unary encoding and then appy
+\Cref{lem:in_PSPACE}.
+
+
+\end{proof}
+
+
+
+
+
+
+
+
